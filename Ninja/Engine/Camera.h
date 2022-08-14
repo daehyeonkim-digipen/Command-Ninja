@@ -1,0 +1,33 @@
+/*--------------------------------------------------------------
+Copyright (C) 2021 DigiPen Institute of Technology.
+Reproduction or disclosure of this file or its contents without the prior
+written consent of DigiPen Institute of Technology is prohibited.
+File Name: Camera.h
+Project: PROJECT
+Author: Kevin Wright
+Creation date: 2/11/2021
+-----------------------------------------------------------------*/
+#pragma once
+#include "Vec2.h"
+#include "Rect.h"
+#include "Component.h"
+
+namespace math {
+	class TransformMatrix;
+}
+
+namespace PROJECT {
+	class Camera : public Component {
+	public:
+		Camera(math::rect2 movableRange);
+		void SetPosition(math::vec2 DEBUG_NEWPosition);
+		const math::vec2& GetPosition() const;
+		void SetExtent(math::irect2 DEBUG_NEWExtent);
+		void Update(const math::vec2& followObjPos);
+		math::TransformMatrix GetMatrix();
+	private:
+		math::irect2 extent;
+		math::vec2 position;
+		math::rect2 movableRange;
+	};
+}

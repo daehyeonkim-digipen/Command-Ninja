@@ -1,0 +1,10 @@
+assets/attack.png
+HotSpot 120 48
+FrameSize 288 192
+Frame 0 0
+Frame 288 0
+Frame 576 0
+Frame 834 0
+
+CollisionRect 0 0 144 96
+Anim assets/attack.anm

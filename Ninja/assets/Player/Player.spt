@@ -1,0 +1,51 @@
+assets/Player/Player.png
+FrameSize 144 96
+HotSpot 48 0
+Frame 0 0
+Frame 144 0
+Frame 288 0
+Frame 432 0
+Frame 576 0
+
+Frame 0 96
+Frame 144 96
+Frame 288 96
+Frame 432 96
+Frame 576 96
+Frame 720 96
+Frame 864 96
+Frame 1008 96
+Frame 0 192
+
+Frame 144 192
+Frame 288 192
+Frame 432 192
+Frame 576 192
+Frame 720 192
+Frame 864 192
+Frame 1008 192
+
+Frame 0 288
+Frame 144 288
+Frame 288 288
+Frame 432 288
+Frame 576 288
+Frame 720 288
+Frame 864 288
+Frame 1008 288
+
+Frame 0 384
+Frame 144 384
+
+Anim assets/Player/Player_idle.anm
+Anim assets/Player/Player_running.anm
+Anim assets/Player/Player_jumping.anm
+Anim assets/Player/Player_falling.anm
+Anim assets/Player/Player_casting.anm
+Anim assets/Player/Player_damaged.anm
+
+Anim assets/Player/Player_attack1.anm
+Anim assets/Player/Player_attack2.anm
+Anim assets/Player/Player_attack3.anm
+
+CollisionRect -16 0 16 64

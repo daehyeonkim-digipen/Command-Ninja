@@ -1,0 +1,20 @@
+assets/Enemy/wisp/wisp2.png
+HotSpot 64 0
+FrameSize 128 128
+Frame 0 0
+Frame 128 0
+Frame 256 0
+Frame 384 0
+Frame 512 0
+Frame 640 0
+Frame 768 0
+Frame 896 0
+Frame 1024 0
+Frame 1152 0
+Frame 0 128
+Frame 128 128
+Frame 384 128
+CollisionRect -16 0 16 100 
+Anim assets/Enemy/wisp/wispWalk.anm
+Anim assets/Enemy/wisp/wispDamaged.anm
+Anim assets/Enemy/wisp/wispDead.anm

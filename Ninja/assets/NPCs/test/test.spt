@@ -1,0 +1,7 @@
+assets/NPCs/test/test_image.png
+FrameSize 80 60
+HotSpot 40 0
+Frame 0 0
+Frame 80 0
+Anim assets/NPCs/test/test_idle.anm
+CollisionRect -40 0 40 60

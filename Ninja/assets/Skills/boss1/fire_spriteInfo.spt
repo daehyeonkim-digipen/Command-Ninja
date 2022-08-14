@@ -1,0 +1,14 @@
+assets/Skills/boss1/fire.png
+FrameSize 40 60
+HotSpot -40 0
+Frame 0 0
+Frame 40 0
+Frame 80 0
+Frame 120 0
+Frame 160 0
+Frame 200 0
+Frame 240 0
+Frame 280 0
+Frame 320 0
+Frame 360 0
+Anim assets/Skills/boss1/fire_ani.anm

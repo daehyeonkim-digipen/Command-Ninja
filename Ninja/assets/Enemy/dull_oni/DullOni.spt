@@ -1,0 +1,12 @@
+assets/Enemy/dull_oni/dull.png
+HotSpot 64 0
+FrameSize 128 128
+Frame 0 0
+Frame 128 0
+Frame 256 0
+Frame 384 0
+Frame 512 0
+CollisionRect -35 0 35 96 
+Anim assets/Enemy/dull_oni/foolWalk.anm
+Anim assets/Enemy/dull_oni/foolDamaged.anm
+Anim assets/Enemy/dull_oni/foolDead.anm
