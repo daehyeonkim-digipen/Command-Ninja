@@ -17,9 +17,9 @@ void PROJECT::Window::Init(std::string windowName) {
     doodle::set_frame_of_reference(doodle::FrameOfReference::RightHanded_OriginBottomLeft);
 }
 
-void PROJECT::Window::Resize(int DEBUG_NEWWidth, int DEBUG_NEWHeight) {
-    windowSize.x = DEBUG_NEWWidth;
-    windowSize.y = DEBUG_NEWHeight;
+void PROJECT::Window::Resize(int newWidth, int newHeight) {
+    windowSize.x = newWidth;
+    windowSize.y = newHeight;
 }
 
 math::ivec2 PROJECT::Window::GetSize() {
@@ -34,7 +34,7 @@ void PROJECT::Window::Update() {
     doodle::update_window();
 }
 
-void on_window_resized(int DEBUG_NEW_width, int DEBUG_NEW_height) {
+void on_window_resized(int new_width, int new_height) {
     Engine::GetLogger().LogEvent("Window Resized");
-    Engine::GetWindow().Resize(DEBUG_NEW_width, DEBUG_NEW_height);
+    Engine::GetWindow().Resize(new_width, new_height);
 }

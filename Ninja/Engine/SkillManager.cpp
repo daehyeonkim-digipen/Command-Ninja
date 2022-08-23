@@ -4,17 +4,17 @@
 #include "Engine.h"
 
 SkillManager::SkillManager() {
-	skills["Basic Attack"] = DEBUG_NEW GameSkill::Slash();
+	skills["Basic Attack"] = new GameSkill::Slash();
 
-	skills["FFA"] = DEBUG_NEW GameSkill::Fire();
-	skills["DDA"] = DEBUG_NEW GameSkill::Dodge();
-	skills["FASD"] = DEBUG_NEW GameSkill::Swift();
-	skills["F"] = DEBUG_NEW GameSkill::SkyWalk();
-	skills["A"] = DEBUG_NEW GameSkill::Dash();
+	skills["FFA"] = new GameSkill::Fire();
+	skills["DDA"] = new GameSkill::Dodge();
+	skills["FASD"] = new GameSkill::Swift();
+	skills["F"] = new GameSkill::SkyWalk();
+	skills["A"] = new GameSkill::Dash();
 
-	skills["Boss1 Strike"] = DEBUG_NEW GameSkill::GroundStrike();
-	skills["Boss1 Stump"] = DEBUG_NEW GameSkill::Stump();
-	skills["Boss1 Dash"] = DEBUG_NEW GameSkill::BrtualDash();
+	skills["Boss1 Strike"] = new GameSkill::GroundStrike();
+	skills["Boss1 Stump"] = new GameSkill::Stump();
+	skills["Boss1 Dash"] = new GameSkill::BrtualDash();
 
 	Categorize();
 }

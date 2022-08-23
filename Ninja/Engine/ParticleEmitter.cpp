@@ -40,14 +40,14 @@ void PROJECT::ParticleEmitter::Emit(int toEmit, math::vec2 emitterPosition, math
 }
 
 PROJECT::ParticleEmitter::Particle::Particle(std::string spriteFile) : GameObject({ 0,0 }), life(0) {
-    AddGOComponent(DEBUG_NEW Sprite(spriteFile, this));
+    AddGOComponent(new Sprite(spriteFile, this));
 }
 
-void PROJECT::ParticleEmitter::Particle::Revive(math::vec2 DEBUG_NEWPosition, math::vec2 DEBUG_NEWVelocity, double DEBUG_NEWLife, math::vec2 DEBUG_NEWScale) {
-    life = DEBUG_NEWLife;
-    SetPosition(DEBUG_NEWPosition);
-    SetVelocity(DEBUG_NEWVelocity);
-    SetScale(DEBUG_NEWScale);
+void PROJECT::ParticleEmitter::Particle::Revive(math::vec2 newPosition, math::vec2 newVelocity, double newLife, math::vec2 newScale) {
+    life = newLife;
+    SetPosition(newPosition);
+    SetVelocity(newVelocity);
+    SetScale(newScale);
     GetGOComponent<Sprite>()->PlayAnimation(0);
 }
 

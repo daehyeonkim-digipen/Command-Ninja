@@ -26,14 +26,14 @@ void Skill::DrawIcon(math::TransformMatrix displayMatrix) {
 }
 
 void GameSkill::Slash::Cast(PROJECT::GameObject* caster) {
-	HitBox* temp = DEBUG_NEW HitBox(caster->GetPosition(), { 100, 80 }, caster, caster->attributes.Atk);
+	HitBox* temp = new HitBox(caster->GetPosition(), { 100, 80 }, caster, caster->attributes.Atk);
 	temp->SetLifeTime(20);
 	Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(temp);
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<AttackEmitter>()->Emit(1, caster->GetPosition(), { 0, 0 }, { 0, 0 }, 0, caster->GetScale(), 0);
 }
 
 void GameSkill::Fire::Cast(PROJECT::GameObject* caster) {
-	Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW HitBox(caster->GetPosition(), { 300, 220 }, caster, 50));
+	Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(new HitBox(caster->GetPosition(), { 300, 220 }, caster, 50));
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<FireEmitter>()->Emit(1, caster->GetPosition(), { 0, 0 }, { 0, 0 }, 0, caster->GetScale(), 0);
 }
 
@@ -114,7 +114,7 @@ void GameSkill::Stump::Update(double dt) {
 
 	if (caster->IsFloat() == false && floatTime == 1) {
 		Engine::GetLogger().LogDebug("stump!");
-		HitBox* box = DEBUG_NEW HitBox(caster->GetPosition() + math::vec2{ -250, 0 } *caster->GetScale(), { 500, 30 }, caster, caster->attributes.Atk);
+		HitBox* box = new HitBox(caster->GetPosition() + math::vec2{ -250, 0 } *caster->GetScale(), { 500, 30 }, caster, caster->attributes.Atk);
 		box->SetLifeTime(10);
 		Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(box);
 		shouldUpdate = false;
@@ -129,7 +129,7 @@ void GameSkill::BrtualDash::Cast(PROJECT::GameObject* caster_) {
 	caster->SetVelocity(math::vec2( 0, 0 ));
 	caster->SetFloat();
 
-	hitbox = DEBUG_NEW HitBox(caster->GetPosition() - math::vec2{ 130, 0 } * caster->GetScale(), caster->GetGOComponent<PROJECT::Sprite>()->GetFrameSize(), caster, caster->attributes.Atk);
+	hitbox = new HitBox(caster->GetPosition() - math::vec2{ 130, 0 } * caster->GetScale(), caster->GetGOComponent<PROJECT::Sprite>()->GetFrameSize(), caster, caster->attributes.Atk);
 	hitbox->SetLifeTime(200);
 	Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(hitbox);
 }
@@ -163,7 +163,7 @@ void GameSkill::GroundStrike::Update(double dt) {
 	if (timer <= 0) {
 		double damage = (double)caster->attributes.Atk * 1.2;
 		Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(
-			DEBUG_NEW HitBox(caster->GetPosition() - math::vec2{ 170, 0 } *caster->GetScale(), { 300, 300 }, caster, (int)damage));
+			new HitBox(caster->GetPosition() - math::vec2{ 170, 0 } *caster->GetScale(), { 300, 300 }, caster, (int)damage));
 		shouldUpdate = false;
 	}
 }

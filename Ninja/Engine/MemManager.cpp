@@ -3,7 +3,7 @@
 #include <iostream>
 #include "MemManager.h"
 
-#undef DEBUG_NEW
+#undef new
 MemManager gMemManager;
 
 void* MemManager::Alloc(std::size_t size, std::string info) {
@@ -11,7 +11,7 @@ void* MemManager::Alloc(std::size_t size, std::string info) {
 	info = "(" + std::to_string(count++) + ")" + info;
 	void* memLocation = malloc(size);
 	allocationToSource.insert(std::make_pair(memLocation, info));
-	std::cout << "Our DEBUG_NEW: " << size << "  " << info << std::endl;
+	std::cout << "Our new: " << size << "  " << info << std::endl;
 	return memLocation;
 }
 
@@ -31,13 +31,13 @@ MemManager::~MemManager() {
 	}
 }
 
-void* operator DEBUG_NEW[](std::size_t size, const std::string fileName, int lineNum) {
+void* operator new[](std::size_t size, const std::string fileName, int lineNum) {
 	unsigned int folderIndex = static_cast<unsigned int>(fileName.find_last_of('\\')) + 1;
 	std::string trackName = fileName.substr(folderIndex, fileName.length() - folderIndex)
 		+ ':' + std::to_string(lineNum);
 	return gMemManager.Alloc(size, trackName);
 }
-void* operator DEBUG_NEW(std::size_t size, const std::string fileName, int lineNum) {
+void* operator new(std::size_t size, const std::string fileName, int lineNum) {
 	unsigned int folderIndex = static_cast<unsigned int>(fileName.find_last_of('\\')) + 1;
 	std::string trackName = fileName.substr(folderIndex, fileName.length() - folderIndex)
 		+ ':' + std::to_string(lineNum);

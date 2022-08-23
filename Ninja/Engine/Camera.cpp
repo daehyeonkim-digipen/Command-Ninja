@@ -13,16 +13,16 @@ Creation date: 2/11/2021
 
 PROJECT::Camera::Camera(math::rect2 movableRange) : movableRange(movableRange), position({ 0, 0 }) {}
 
-void PROJECT::Camera::SetPosition(math::vec2 DEBUG_NEWPosition) {
-	position = DEBUG_NEWPosition;
+void PROJECT::Camera::SetPosition(math::vec2 newPosition) {
+	position = newPosition;
 }
 
 const math::vec2 &PROJECT::Camera::GetPosition() const {
 	return position;
 }
 
-void PROJECT::Camera::SetExtent(math::irect2 DEBUG_NEWExtent) {
-	extent = DEBUG_NEWExtent;
+void PROJECT::Camera::SetExtent(math::irect2 newExtent) {
+	extent = newExtent;
 }
 
 void PROJECT::Camera::Update(const math::vec2& followObjPos) {

@@ -9,7 +9,6 @@ Author: Kevin Wright
 Creation date: 2/10/2021
 -----------------------------------------------------------------*/
 #pragma once
-#define DEBUG_NEW new( _NORMAL_BLOCK, __FILE__, __LINE__ ) 
 #include <chrono>
 #include "GameStateManager.h"
 #include "Input.h"

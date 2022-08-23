@@ -14,7 +14,7 @@ Creation date: 2/19/2021
 
 PROJECT::Texture* PROJECT::TextureManager::Load(const std::filesystem::path& filePath) {
     if (pathToTexture.find(filePath) == pathToTexture.end()) {
-        pathToTexture[filePath] = DEBUG_NEW Texture(filePath);
+        pathToTexture[filePath] = new Texture(filePath);
     }
     return pathToTexture[filePath];
 }

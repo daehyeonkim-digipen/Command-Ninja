@@ -34,13 +34,13 @@ PROJECT::Animation::Animation(const std::filesystem::path& fileName) : animSeque
 			inFile >> frame;
 			inFile >> targetTime;
 
-			animation.push_back(DEBUG_NEW PlayFrame(frame, targetTime));
+			animation.push_back(new PlayFrame(frame, targetTime));
 		} else if (label == "Loop") {
 			int loopToIndex;
 			inFile >> loopToIndex;
-			animation.push_back(DEBUG_NEW Loop(loopToIndex));
+			animation.push_back(new Loop(loopToIndex));
 		} else if (label == "End") {
-			animation.push_back(DEBUG_NEW End());
+			animation.push_back(new End());
 		} else {
 			Engine::GetLogger().LogError("Unknown command " + label + " in anm file " + fileName.generic_string());
 		}

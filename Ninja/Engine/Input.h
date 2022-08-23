@@ -59,8 +59,8 @@ namespace PROJECT {
 		bool IsMousePressed(InputMouse::MouseButton button) const;
 		void SetMouseDown(InputMouse::MouseButton button, bool value);
 		
-		void SetMousePosition(math::ivec2 DEBUG_NEWPosition);
-		void SetPrevMousePosition(math::ivec2 DEBUG_NEWPosition);
+		void SetMousePosition(math::ivec2 newPosition);
+		void SetPrevMousePosition(math::ivec2 newPosition);
 		math::ivec2 GetMousePosition() const;
 		math::ivec2 GetPrevMousePosition() const;
 		math::ivec2 GetMouseDirection() const;

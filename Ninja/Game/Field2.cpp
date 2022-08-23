@@ -24,17 +24,17 @@ void Field2::Load() {
 		playerPtr->SetPosition({ -2304, 480 });
 	}
 
-	PROJECT::GameObjectManager* gom = DEBUG_NEW PROJECT::GameObjectManager();
+	PROJECT::GameObjectManager* gom = new PROJECT::GameObjectManager();
 	AddGSComponent(gom);
 
 	read_floor();
-	gom->Add(DEBUG_NEW Portal({ 100, 96 }, Screens::Field1, "Field 1"));
-	gom->Add(DEBUG_NEW Portal({ -2304, 480 }, Screens::Field3, "Field 3"));
+	gom->Add(new Portal({ 100, 96 }, Screens::Field1, "Field 1"));
+	gom->Add(new Portal({ -2304, 480 }, Screens::Field3, "Field 3"));
 
-	gom->Add(DEBUG_NEW DullOni({ -700, 96 }));
-	gom->Add(DEBUG_NEW Wisp({ -1400, 96 }));
-	gom->Add(DEBUG_NEW DullOni({ -800, 384 }));
-	gom->Add(DEBUG_NEW Wisp({ -1760, 384 }));
+	gom->Add(new DullOni({ -700, 96 }));
+	gom->Add(new Wisp({ -1400, 96 }));
+	gom->Add(new DullOni({ -800, 384 }));
+	gom->Add(new Wisp({ -1760, 384 }));
 
 	background.Add("assets/background/background_1.png", 0);
 	background.Add("assets/background/Trees2.png", 4);

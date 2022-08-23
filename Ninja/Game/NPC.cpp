@@ -42,11 +42,11 @@ void NPC::Load(const std::filesystem::path& npcFilePath) {
 
 		if (text == "Sprite") {
 			inFile >> text;
-			AddGOComponent(DEBUG_NEW PROJECT::Sprite(text, this));
+			AddGOComponent(new PROJECT::Sprite(text, this));
 		}
 		else if (text == "Quest") {
 			inFile >> text;
-			AddGOComponent(DEBUG_NEW Quest(text));
+			AddGOComponent(new Quest(text));
 		}
 		else if (text == "Name") {
 			inFile >> name;
@@ -70,7 +70,7 @@ void NPC::Update(double dt) {
 		}
 
 		if (playerQuest.IsQuestDone() == true && playerQuest.GetNpcName() == GetObjectTypeName()) {
-			Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW Scroll(GetPosition()));
+			Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(new Scroll(GetPosition()));
 			player->ResetQuest();
 			if (npcQuest->IsLoop() == false) {
 				player->AddQuestNpcName(GetObjectTypeName());

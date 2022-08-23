@@ -70,14 +70,14 @@ void PROJECT::Sprite::Load(const std::filesystem::path& spriteInfoFile, GameObje
 			hotSpotList.push_back({ hotSpotX, hotSpotY });
 		} else if (text == "Anim") {
 			inFile >> text;
-			animations.push_back(DEBUG_NEW Animation(text));
+			animations.push_back(new Animation(text));
 		} else if (text == "CollisionRect") {
 			math::irect2 rect;
 			inFile >> rect.point1.x >> rect.point1.y >> rect.point2.x >> rect.point2.y;
 			if (object == nullptr) {
 				Engine::GetLogger().LogError("Trying to add collision to a nullobject");
 			} else {
-				object->AddGOComponent(DEBUG_NEW RectCollision(rect, object));
+				object->AddGOComponent(new RectCollision(rect, object));
 			}
 		} else if (text == "CollisionCircle") {
 			double radius;
@@ -85,7 +85,7 @@ void PROJECT::Sprite::Load(const std::filesystem::path& spriteInfoFile, GameObje
 			if (object == nullptr) {
 				Engine::GetLogger().LogError("Trying to add collision to a nullobject");
 			} else {
-				object->AddGOComponent(DEBUG_NEW CircleCollision(radius, object));
+				object->AddGOComponent(new CircleCollision(radius, object));
 			}
 		} else {
 			Engine::GetLogger().LogError("Unknown spt command " + text);
@@ -96,7 +96,7 @@ void PROJECT::Sprite::Load(const std::filesystem::path& spriteInfoFile, GameObje
 		frameTexel.push_back({ 0,0 });
 	}
 	if (animations.empty() == true) {
-		animations.push_back(DEBUG_NEW Animation());
+		animations.push_back(new Animation());
 		PlayAnimation(0);
 	}
 }

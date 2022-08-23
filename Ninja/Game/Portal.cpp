@@ -9,7 +9,7 @@ Portal::Portal(math::ivec2 pos, Screens nextscreen, std::string name) : NextScre
 {
 	Texture = Engine::GetTextureManager().Load("assets/Portal/Portal.Png");
 	SetPosition(math::vec2(pos));
-	AddGOComponent(DEBUG_NEW PROJECT::RectCollision({ {0,0}, Texture->GetSize() }, this));
+	AddGOComponent(new PROJECT::RectCollision({ {0,0}, Texture->GetSize() }, this));
 	nameFont = Engine::GetSpriteFont(static_cast<int>(Fonts::Font1)).DrawTextToTexture(name, 0xFFFFFFFF, true);
 }
 

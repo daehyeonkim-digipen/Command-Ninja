@@ -9,7 +9,7 @@ Scroll::Scroll(math::vec2 pos)
 	: isFalling(true)
 {
 	texture = Engine::GetTextureManager().Load("assets/Scrolls/blue.png");
-	AddGOComponent(DEBUG_NEW PROJECT::RectCollision({ { texture->GetSize().x / 4, 0 }, { texture->GetSize().x * 3 / 4, texture->GetSize().y / 2 } }, this));
+	AddGOComponent(new PROJECT::RectCollision({ { texture->GetSize().x / 4, 0 }, { texture->GetSize().x * 3 / 4, texture->GetSize().y / 2 } }, this));
 	SetPosition(pos - math::vec2{ texture->GetSize().x / 2.0, 0 });
 	ChangeState(&state_nothing);
 	SetVelocity({ 0, 500 });

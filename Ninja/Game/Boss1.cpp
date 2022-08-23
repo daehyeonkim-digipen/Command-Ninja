@@ -16,7 +16,7 @@
 Boss1::Boss1(math::vec2 pos, const std::filesystem::path& spriteFilePath, PROJECT::GameObject* target_)
 	: timer(0), target(target_), hitboxPtr(nullptr)
 {
-	AddGOComponent(DEBUG_NEW PROJECT::Sprite(spriteFilePath, this));
+	AddGOComponent(new PROJECT::Sprite(spriteFilePath, this));
 	ChangeState(&stateFalling);
 	SetPosition(pos);
 
@@ -25,8 +25,8 @@ Boss1::Boss1(math::vec2 pos, const std::filesystem::path& spriteFilePath, PROJEC
 	attributes.Atk = 20;
 
 	PROJECT::UIManager* UIM = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>();
-	UIM->AddUI(DEBUG_NEW HPBar({ 300, 40 }, UIType::BossBar, "assets/Bosses/boss_hpbar_empty.png", this, 875 / 2));
-	UIM->AddUI(DEBUG_NEW StaminaBar({ 300, 35 }, UIType::BossBar, "assets/Bosses/boss_stamina_empty.png", this, 875 / 2));
+	UIM->AddUI(new HPBar({ 300, 40 }, UIType::BossBar, "assets/Bosses/boss_hpbar_empty.png", this, 875 / 2));
+	UIM->AddUI(new StaminaBar({ 300, 35 }, UIType::BossBar, "assets/Bosses/boss_stamina_empty.png", this, 875 / 2));
 
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<SkillManager>()->Unlock("Boss1 Stump");
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<SkillManager>()->Unlock("Boss1 Dash");
@@ -106,7 +106,7 @@ void Boss1::ResolveCollision(GameObject* objectA) {
 		if (objectA != hitboxPtr) {
 			hitboxPtr = static_cast<HitBox*>(objectA);
 			Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>()->AddUI(
-				DEBUG_NEW PopUpDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, hitboxPtr->GetDamage()));
+				new PopUpDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, hitboxPtr->GetDamage()));
 			attributes.Hp -= hitboxPtr->GetDamage();
 			if (IsDead() == true) {
 				attributes.Hp = 0;
@@ -280,7 +280,7 @@ void Boss1::Boss1_State_SummonFire::Update(GameObject* object, double dt) {
 	if (boss->timer > 0)
 		boss->timer -= dt;
 	else if (boss->wisps.size() < 5) {
-		Wisp* wisp = DEBUG_NEW Wisp(boss->GetPosition() + math::vec2{ -150, 130 } + math::vec2{ (double)boss->wisps.size() * 50, 0 });
+		Wisp* wisp = new Wisp(boss->GetPosition() + math::vec2{ -150, 130 } + math::vec2{ (double)boss->wisps.size() * 50, 0 });
 		wisp->attributes.Hp = wisp->attributes.maxHp = 500;
 		wisp->SetInvulnerable(true);
 		boss->wisps.push_back(wisp);

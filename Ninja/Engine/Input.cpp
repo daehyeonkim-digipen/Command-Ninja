@@ -36,12 +36,12 @@ void PROJECT::Input::SetKeyDown(InputKey::Keyboard key, bool value) {
 }
 
 
-void PROJECT::Input::SetMousePosition(math::ivec2 DEBUG_NEWPosition) {
-	mousePosition = DEBUG_NEWPosition;
+void PROJECT::Input::SetMousePosition(math::ivec2 newPosition) {
+	mousePosition = newPosition;
 }
 
-void PROJECT::Input::SetPrevMousePosition(math::ivec2 DEBUG_NEWPosition) {
-	previouseMousePosition = DEBUG_NEWPosition;
+void PROJECT::Input::SetPrevMousePosition(math::ivec2 newPosition) {
+	previouseMousePosition = newPosition;
 }
 
 math::ivec2 PROJECT::Input::GetMousePosition() const {

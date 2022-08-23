@@ -20,7 +20,7 @@ namespace PROJECT {
         class Particle : public GameObject {
         public:
             Particle(std::string spriteFile);
-            void Revive(math::vec2 position, math::vec2 velocity, double life, math::vec2 DEBUG_NEWScale);
+            void Revive(math::vec2 position, math::vec2 velocity, double life, math::vec2 newScale);
             void Update(double dt) override;
             void Draw(math::TransformMatrix matrix) override;
             bool IsAlive() { return life > 0; }

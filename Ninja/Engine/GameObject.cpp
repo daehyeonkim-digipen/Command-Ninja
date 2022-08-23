@@ -54,8 +54,8 @@ void PROJECT::GameObject::Update(double dt) {
 	currState->TestForExit(this);
 }
 
-void PROJECT::GameObject::ChangeState(State* DEBUG_NEWState) {
-	currState = DEBUG_NEWState;
+void PROJECT::GameObject::ChangeState(State* newState) {
+	currState = newState;
 	currState->Enter(this);
 }
 
@@ -87,13 +87,13 @@ const math::TransformMatrix& PROJECT::GameObject::GetMatrix() {
 	return objectMatrix;
 }
 
-void PROJECT::GameObject::SetPosition(math::vec2 DEBUG_NEWPosition) {
-	position = DEBUG_NEWPosition;
+void PROJECT::GameObject::SetPosition(math::vec2 newPosition) {
+	position = newPosition;
 	updateMatrix = true;
 }
 
-void PROJECT::GameObject::SetVelocity(math::vec2 DEBUG_NEWVelocity) {
-	velocity = DEBUG_NEWVelocity;
+void PROJECT::GameObject::SetVelocity(math::vec2 newVelocity) {
+	velocity = newVelocity;
 }
 
 void PROJECT::GameObject::SetSpeedFactor(math::vec2 scale) {
@@ -104,8 +104,8 @@ void PROJECT::GameObject::SetFloat() {
 	standingOnObject = nullptr;
 }
 
-void PROJECT::GameObject::UpdateVelocity(math::vec2 DEBUG_NEWVelocity) {
-	velocity += DEBUG_NEWVelocity;
+void PROJECT::GameObject::UpdateVelocity(math::vec2 newVelocity) {
+	velocity += newVelocity;
 }
 
 void PROJECT::GameObject::UpdatePosition(math::vec2 addPosition) {
@@ -113,13 +113,13 @@ void PROJECT::GameObject::UpdatePosition(math::vec2 addPosition) {
 	updateMatrix = true;
 }
 
-void PROJECT::GameObject::SetScale(math::vec2 DEBUG_NEWScale) {
-	scale = DEBUG_NEWScale;
+void PROJECT::GameObject::SetScale(math::vec2 newScale) {
+	scale = newScale;
 	updateMatrix = true;
 }
 
-void PROJECT::GameObject::SetRotation(double DEBUG_NEWRotationAmount) {
-	rotation = DEBUG_NEWRotationAmount;
+void PROJECT::GameObject::SetRotation(double newRotationAmount) {
+	rotation = newRotationAmount;
 	updateMatrix = true;
 }
 void PROJECT::GameObject::UpdateRotation(double adjustRotation) {

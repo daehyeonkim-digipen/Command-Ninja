@@ -44,8 +44,8 @@ namespace PROJECT {
 		double GetRotation() const;
 		const math::TransformMatrix& GetMatrix();
 
-		void SetPosition(math::vec2 DEBUG_NEWPosition);
-		void SetVelocity(math::vec2 DEBUG_NEWVelocity);
+		void SetPosition(math::vec2 newPosition);
+		void SetVelocity(math::vec2 newVelocity);
 		void SetSpeedFactor(math::vec2 scale);
 		void SetFloat();
 
@@ -92,11 +92,11 @@ namespace PROJECT {
 		State_Nothing state_nothing;
 
 		void UpdatePosition(math::vec2 addPosition);
-		void UpdateVelocity(math::vec2 DEBUG_NEWVelocity);
-		void SetScale(math::vec2 DEBUG_NEWScale);
-		void SetRotation(double DEBUG_NEWRotationAmount);
+		void UpdateVelocity(math::vec2 newVelocity);
+		void SetScale(math::vec2 newScale);
+		void SetRotation(double newRotationAmount);
 		void UpdateRotation(double adjustRotation);
-		void ChangeState(State* DEBUG_NEWState);
+		void ChangeState(State* newState);
 
 		State* currState;
 		math::vec2 screenMousePosition;

@@ -23,7 +23,7 @@ void Village::Load() {
 	MapNameFont = Engine::GetSpriteFont(static_cast<int>(Fonts::Font2)).DrawTextToTexture(GetName(), 0xFFFFFFFF, true);
 
 	PROJECT::GameObjectManager* gomm = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::GameObjectManager>();
-	AddGSComponent(DEBUG_NEW PROJECT::GameObjectManager());
+	AddGSComponent(new PROJECT::GameObjectManager());
 	PROJECT::GameObjectManager* gom = GetGSComponent<PROJECT::GameObjectManager>();
 
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::Camera>()->SetExtent({ { 0, -100 }, { Engine::GetWindow().GetSize().x, 1000 } });
@@ -36,13 +36,13 @@ void Village::Load() {
 	playerPtr->SetVelocity({ 0,0 });
 
 	read_floor();
-	gom->Add(DEBUG_NEW Portal({ { 1300, 96 }, Screens::Field1, "Level1" }));
-	gom->Add(DEBUG_NEW NPC({ 1280, 928 }, "assets/NPCs/test/test.npc"));
+	gom->Add(new Portal({ { 1300, 96 }, Screens::Field1, "Level1" }));
+	gom->Add(new NPC({ 1280, 928 }, "assets/NPCs/test/test.npc"));
 
 	background.Add( "assets/background/background_1.png",0);
 	background.Add("assets/background/Trees2.png", 4);
 	background.Add("assets/background/Trees.png", 2);
-	//gom->Add(DEBUG_NEW Scroll({ 800, 300 }));
+	//gom->Add(new Scroll({ 800, 300 }));
 	Engine::GetAudio().PlayBGM(&Engine::GetAudio().BGMVillage);
 }
 

@@ -36,18 +36,18 @@ void Field1::Load() {
 
 	// playerPtr->SetVelocity({ 0,0 });
 
-	PROJECT::GameObjectManager* gom = DEBUG_NEW PROJECT::GameObjectManager();
+	PROJECT::GameObjectManager* gom = new PROJECT::GameObjectManager();
 	AddGSComponent(gom);
 
 	read_floor();
 
-	gom->Add(DEBUG_NEW Portal({ { -300, 96 }, Screens::Village, "Village" }));
-	gom->Add(DEBUG_NEW Portal({ { 2000, 96 }, Screens::Field2, "Field 2" }));
+	gom->Add(new Portal({ { -300, 96 }, Screens::Village, "Village" }));
+	gom->Add(new Portal({ { 2000, 96 }, Screens::Field2, "Field 2" }));
 
-	gom->Add(DEBUG_NEW Wisp({ 352, 352 }));
-	gom->Add(DEBUG_NEW Wisp({ 600, 100 }));
-	gom->Add(DEBUG_NEW Wisp({ 1000, 100 }));
-	//gom->Add(DEBUG_NEW Wisp({ 1600, 100 }));
+	gom->Add(new Wisp({ 352, 352 }));
+	gom->Add(new Wisp({ 600, 100 }));
+	gom->Add(new Wisp({ 1000, 100 }));
+	//gom->Add(new Wisp({ 1600, 100 }));
 
 	background.Add("assets/background/background_1.png", 0);
 	background.Add("assets/background/Trees2.png", 4);

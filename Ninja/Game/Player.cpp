@@ -27,18 +27,18 @@ Player::Player(math::vec2 startPos)
 	signKey1(GameKey::A), signKey2(GameKey::S), signKey3(GameKey::D), signKey4(GameKey::F),
 	attackTime(0)
 {
-	AddGOComponent(DEBUG_NEW PROJECT::Sprite("assets/Player/Player.spt", this));
-	AddGOComponent(DEBUG_NEW Gold());
+	AddGOComponent(new PROJECT::Sprite("assets/Player/Player.spt", this));
+	AddGOComponent(new Gold());
 	ChangeState(&stateIdle);
 
 	ResetLevel();
 
 	PROJECT::UIManager* UIM = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>();
-	UIM->AddUI(DEBUG_NEW HPBar({ 90, 750 }, UIType::PlayerBar, "assets/UI/ui_hp_empty.png", this));
-	UIM->AddUI(DEBUG_NEW StaminaBar({ 110, 725 }, UIType::PlayerBar, "assets/UI/ui_stamina_empty.png", this));
+	UIM->AddUI(new HPBar({ 90, 750 }, UIType::PlayerBar, "assets/UI/ui_hp_empty.png", this));
+	UIM->AddUI(new StaminaBar({ 110, 725 }, UIType::PlayerBar, "assets/UI/ui_stamina_empty.png", this));
 
-	UIM->AddUI(DEBUG_NEW SkillWindow(GameKey::K, this));
-	UIM->AddUI(DEBUG_NEW QuestWindow(GameKey::I, this));
+	UIM->AddUI(new SkillWindow(GameKey::K, this));
+	UIM->AddUI(new QuestWindow(GameKey::I, this));
 
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<SkillManager>()->Unlock("Basic Attack");
 }
@@ -176,7 +176,7 @@ void Player::ResolveCollision(GameObject* objectA)
 			}
 			GetPosition().x < objectA->GetPosition().x ? SetVelocity({ -300, 130 }) : SetVelocity({ 300, 130 });
 			Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>()->AddUI(
-				DEBUG_NEW PlayerTakenDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, objectA->attributes.Atk));
+				new PlayerTakenDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, objectA->attributes.Atk));
 			ChangeState(&stateDamaged);
 		}
 
@@ -195,7 +195,7 @@ void Player::ResolveCollision(GameObject* objectA)
 			}
 
 			Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>()->AddUI(
-				DEBUG_NEW PlayerTakenDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, static_cast<HitBox*>(objectA)->GetDamage()));
+				new PlayerTakenDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, static_cast<HitBox*>(objectA)->GetDamage()));
 			ChangeState(&stateDamaged);
 		}
 
@@ -277,7 +277,7 @@ void Player::UpdateSignCasting() {
 
 void Player::alteration(std::string path) {
 	RemoveGOComponent<PROJECT::Sprite>();
-	AddGOComponent(DEBUG_NEW PROJECT::Sprite(path, this));
+	AddGOComponent(new PROJECT::Sprite(path, this));
 	currState = &stateIdle;
 }
 

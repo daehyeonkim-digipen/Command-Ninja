@@ -24,16 +24,16 @@ void Field3::Load() {
 		playerPtr->SetPosition({ 192, 864 });
 	}
 
-	PROJECT::GameObjectManager* gom = DEBUG_NEW PROJECT::GameObjectManager();
+	PROJECT::GameObjectManager* gom = new PROJECT::GameObjectManager();
 	AddGSComponent(gom);
 
 	read_floor();
-	gom->Add(DEBUG_NEW Portal({ 150, 100 }, Screens::Field2, "Field 2"));
-	gom->Add(DEBUG_NEW Portal({ 192, 864 }, Screens::BossField1, "Boss Field"));
+	gom->Add(new Portal({ 150, 100 }, Screens::Field2, "Field 2"));
+	gom->Add(new Portal({ 192, 864 }, Screens::BossField1, "Boss Field"));
 
-	gom->Add(DEBUG_NEW AngryOni({ 672, 224 }));
-	gom->Add(DEBUG_NEW AngryOni({ 704, 736 }));
-	gom->Add(DEBUG_NEW AngryOni({ 1152, 608 }));
+	gom->Add(new AngryOni({ 672, 224 }));
+	gom->Add(new AngryOni({ 704, 736 }));
+	gom->Add(new AngryOni({ 1152, 608 }));
 
 	background.Add("assets/background/background_1.png", 0);
 	background.Add("assets/background/Trees2.png", 4);

@@ -20,9 +20,9 @@ namespace PROJECT {
 	class Camera : public Component {
 	public:
 		Camera(math::rect2 movableRange);
-		void SetPosition(math::vec2 DEBUG_NEWPosition);
+		void SetPosition(math::vec2 newPosition);
 		const math::vec2& GetPosition() const;
-		void SetExtent(math::irect2 DEBUG_NEWExtent);
+		void SetExtent(math::irect2 newExtent);
 		void Update(const math::vec2& followObjPos);
 		math::TransformMatrix GetMatrix();
 	private:

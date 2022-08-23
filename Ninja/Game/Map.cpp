@@ -92,7 +92,7 @@ void Map::read_floor()
 			}
 			else
 			{
-				GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW Floor(math::irect2{ {Size[0], Size[1] }, { Size[2], Size[3] }}, floors));
+				GetGSComponent<PROJECT::GameObjectManager>()->Add(new Floor(math::irect2{ {Size[0], Size[1] }, { Size[2], Size[3] }}, floors));
 				Size.clear();
 			}
 		}
@@ -119,25 +119,25 @@ void Map::DrawDeadScene() {
 
 void Map::load_Map() {
 #ifdef _DEBUG
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW ShowCollision(PROJECT::InputKey::Keyboard::Tilde));
+	Engine::GetGameStateManager().AddGSMComponent(new ShowCollision(PROJECT::InputKey::Keyboard::Tilde));
 #endif
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW Gravity(Map::gravity));
+	Engine::GetGameStateManager().AddGSMComponent(new Gravity(Map::gravity));
 
 	math::vec2 windowSize = Engine::GetWindow().GetSize().operator math::vec2();
-	PROJECT::Camera* cameraPtr = DEBUG_NEW PROJECT::Camera({ { windowSize.x * 0.45, windowSize.y * 0.4 }, { windowSize.x * 0.55, windowSize.y * 0.5 } });
+	PROJECT::Camera* cameraPtr = new PROJECT::Camera({ { windowSize.x * 0.45, windowSize.y * 0.4 }, { windowSize.x * 0.55, windowSize.y * 0.5 } });
 	Engine::GetGameStateManager().AddGSMComponent(cameraPtr);
 	cameraPtr->SetExtent({ { 0, 0 }, { 0, 0 } });
 
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW PROJECT::UIManager());
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW SkillManager());
+	Engine::GetGameStateManager().AddGSMComponent(new PROJECT::UIManager());
+	Engine::GetGameStateManager().AddGSMComponent(new SkillManager());
 
-	PROJECT::GameObjectManager* gomm = DEBUG_NEW PROJECT::GameObjectManager();
+	PROJECT::GameObjectManager* gomm = new PROJECT::GameObjectManager();
 	Engine::GetGameStateManager().AddGSMComponent(gomm);
 
-	gomm->Add(DEBUG_NEW Player({ 150, 150 }));
+	gomm->Add(new Player({ 150, 150 }));
 
-	//Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW SkillsManager());
+	//Engine::GetGameStateManager().AddGSMComponent(new SkillsManager());
 	cameraPtr->SetPosition(gomm->GetGameObject<Player>()->GetPosition() - Engine::GetWindow().GetSize().operator math::vec2() / 2);
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW AttackEmitter());
-	Engine::GetGameStateManager().AddGSMComponent(DEBUG_NEW FireEmitter());
+	Engine::GetGameStateManager().AddGSMComponent(new AttackEmitter());
+	Engine::GetGameStateManager().AddGSMComponent(new FireEmitter());
 }

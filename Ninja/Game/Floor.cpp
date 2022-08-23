@@ -15,7 +15,7 @@ Creation date: 2/19/2021
 #include "Enemy.h"
 
 Floor::Floor(math::irect2 position, std::map<int, PROJECT::Texture*> type) : GameObject(static_cast<math::vec2>(position.point1)), tiles(type) {
-	AddGOComponent(DEBUG_NEW PROJECT::RectCollision(math::irect2{ math::ivec2{ 0,0 }, math::ivec2{ position.point2 - position.point1 } }, this));
+	AddGOComponent(new PROJECT::RectCollision(math::irect2{ math::ivec2{ 0,0 }, math::ivec2{ position.point2 - position.point1 } }, this));
 }
 
 bool Floor::CanCollideWith(GameObjectType)

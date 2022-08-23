@@ -21,7 +21,7 @@ Enemy::Enemy(math::vec2 pos, const std::filesystem::path& enmFilePath)
 	attributes.Hp = attributes.maxHp;
 
 	PROJECT::UIManager* UIM = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>();
-	barPtr = DEBUG_NEW HPBar(GetPosition(), UIType::EnemyBar, "assets/Enemy/enemy_hpbar_empty.png", this, 40);
+	barPtr = new HPBar(GetPosition(), UIType::EnemyBar, "assets/Enemy/enemy_hpbar_empty.png", this, 40);
 	UIM->AddUI(barPtr);
 }
 
@@ -36,7 +36,7 @@ void Enemy::Load(const std::filesystem::path& enmFilePath) {
 
 		if (text == "Sprite") {
 			inFile >> text;
-			AddGOComponent(DEBUG_NEW PROJECT::Sprite(text, this));
+			AddGOComponent(new PROJECT::Sprite(text, this));
 		}
 		else if (text == "HP") {
 			inFile >> attributes.maxHp;
@@ -99,7 +99,7 @@ void Enemy::ResolveCollision(PROJECT::GameObject* objectA) {
 		if (objectA != hitboxPtr) {
 			hitboxPtr = static_cast<HitBox*>(objectA);
 			Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>()->AddUI(
-				DEBUG_NEW PopUpDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, hitboxPtr->GetDamage()));
+				new PopUpDamage(GetPosition() + math::vec2{ 0, (double)GetGOComponent<PROJECT::Sprite>()->GetFrameSize().y * 0.8 }, hitboxPtr->GetDamage()));
 			attributes.Hp -= hitboxPtr->GetDamage();
 			ChangeState(&stateDamaged);
 		}
@@ -220,7 +220,7 @@ void Enemy::Enemy_State_Dead::Enter(GameObject* object) {
 	enemy->SetVelocity({ 0, 0 });
 	enemy->RemoveGOComponent<PROJECT::Collision>();
 	if (rand() % 100 < 10)
-		Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW Scroll(enemy->GetPosition()));
+		Engine::GetGSComponent<PROJECT::GameObjectManager>()->Add(new Scroll(enemy->GetPosition()));
 
 	Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>()->RemoveUI(enemy);
 } 

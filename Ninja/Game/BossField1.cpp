@@ -20,16 +20,16 @@ void BossField1::Load() {
 	playerPtr = gomm->GetGameObject<Player>();
 	playerPtr->SetPosition({ 150, 100 });
 
-	PROJECT::GameObjectManager* gom = DEBUG_NEW PROJECT::GameObjectManager();
+	PROJECT::GameObjectManager* gom = new PROJECT::GameObjectManager();
 	AddGSComponent(gom);
 
 	read_floor();
 	if (playerPtr->HasClearedGameState(GetName()) == false) {
-		gom->Add(DEBUG_NEW Boss1({ 1500, 120 }, "assets/Bosses/Boss1/Boss1.spt", playerPtr));
+		gom->Add(new Boss1({ 1500, 120 }, "assets/Bosses/Boss1/Boss1.spt", playerPtr));
 	}
 	else {
-		gom->Add(DEBUG_NEW Portal({ 50, 96 }, Screens::Field1, "Field 1"));
-		gom->Add(DEBUG_NEW Portal({ 1100, 96 }, Screens::MainMenu, "Next Chapter"));
+		gom->Add(new Portal({ 50, 96 }, Screens::Field1, "Field 1"));
+		gom->Add(new Portal({ 1100, 96 }, Screens::MainMenu, "Next Chapter"));
 	}
 
 	/* 5 4 10 6 -1
@@ -47,8 +47,8 @@ void BossField1::Update(double dt) {
 	Boss1* boss = GetGSComponent<PROJECT::GameObjectManager>()->GetGameObject<Boss1>();
 	if (boss != nullptr && boss->IsDead() == true) {
 		playerPtr->AddClearedGameState(GetName());
-		GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW Portal({ 50, 96 }, Screens::Field1, "Field 1"));
-		GetGSComponent<PROJECT::GameObjectManager>()->Add(DEBUG_NEW Portal({ 1100, 96 }, Screens::MainMenu, "Next Chapter"));
+		GetGSComponent<PROJECT::GameObjectManager>()->Add(new Portal({ 50, 96 }, Screens::Field1, "Field 1"));
+		GetGSComponent<PROJECT::GameObjectManager>()->Add(new Portal({ 1100, 96 }, Screens::MainMenu, "Next Chapter"));
 		boss->SetCount();
 	}
 }

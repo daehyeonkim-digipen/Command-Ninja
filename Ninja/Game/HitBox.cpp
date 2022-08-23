@@ -11,7 +11,7 @@ HitBox::HitBox(math::vec2 pos, math::ivec2 size, GameObject* caster_, int damage
 {	
 	if (caster->GetScale() == math::vec2{ -1, 1 }) 
 		size.x *= -1;
-	AddGOComponent(DEBUG_NEW PROJECT::RectCollision({ { 0, 0 }, size }, this));
+	AddGOComponent(new PROJECT::RectCollision({ { 0, 0 }, size }, this));
 	attributes.Hp = 30;
 }
 
@@ -38,7 +38,7 @@ void HitBox::ResolveCollision(GameObject* objectA) {
 	//	objectA->attributes.Hp -= damage;
 	//	PROJECT::UIManager* uim = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::UIManager>();
 	//	math::vec2 cameraPosition = Engine::GetGameStateManager().GetGSMComponents().GetComponent<PROJECT::Camera>()->GetPosition();
-	//	uim->AddUI(DEBUG_NEW PopUpDamage(objectA->GetPosition() - cameraPosition + math::vec2{ 0, 80 }, damage));
+	//	uim->AddUI(new PopUpDamage(objectA->GetPosition() - cameraPosition + math::vec2{ 0, 80 }, damage));
 	//	targets.push_back(objectA);
 	//}
 }
